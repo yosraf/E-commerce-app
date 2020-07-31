@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ecommerce-frontend"
+    }
+  },
+  "defaultProject": "ecommerce-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
