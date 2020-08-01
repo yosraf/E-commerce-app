@@ -4,7 +4,7 @@ import {Product} from '../../common/product';
 
 @Component({
   selector: 'app-product-list',
-  templateUrl: './product-list-table.component.html',
+  templateUrl: './product-list-grid.component.html',
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
@@ -22,7 +22,41 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listProducts();
+    // this.listProducts();
+    this.products = [{
+      'sku':'',
+      'description':'',
+      'name': 'spring boot course',
+      'unitPrice': 200,
+      'unitsInStock': 10,
+      'imageUrl':'https://www.liksi.tech/wp-content/uploads/2019/11/Plan-de-travail-1@0.75x-100.jpg',
+      'active':true,
+      'dateCreated':null,
+      'lastUpdated':null
+    },
+      {
+        'sku':'',
+        'description':'',
+        'name': 'spring boot course',
+        'unitPrice': 200,
+        'unitsInStock': 10,
+        'imageUrl':'https://www.liksi.tech/wp-content/uploads/2019/11/Plan-de-travail-1@0.75x-100.jpg',
+        'active':true,
+        'dateCreated':null,
+        'lastUpdated':null
+      },
+      {
+        'sku':'',
+        'description':'',
+        'name': 'spring boot course',
+        'unitPrice': 200,
+        'unitsInStock': 10,
+        'imageUrl':'https://www.liksi.tech/wp-content/uploads/2019/11/Plan-de-travail-1@0.75x-100.jpg',
+        'active':true,
+        'dateCreated':null,
+        'lastUpdated':null
+      }
+    ];
   }
 
 }
