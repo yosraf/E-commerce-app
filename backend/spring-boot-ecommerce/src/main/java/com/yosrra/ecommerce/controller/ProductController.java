@@ -2,13 +2,14 @@ package com.yosrra.ecommerce.controller;
 
 import com.yosrra.ecommerce.entity.Product;
 import com.yosrra.ecommerce.service.ProductServiceImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+@CrossOrigin("http://localhost:4200")
 
 @RestController
 @RequestMapping("api")
@@ -23,5 +24,10 @@ public class ProductController {
     @GetMapping("products")
     ResponseEntity<List<Product>> getProductList() {
         return new ResponseEntity<>(productService.getProductList(), HttpStatus.OK);
+    }
+
+    @GetMapping("products/search/{id}")
+    ResponseEntity<List<Product>> findByCategoryId(@PathVariable Long id, Pageable pageable) {
+        return new ResponseEntity<>(productService.findByCategoryId(id, pageable), HttpStatus.OK);
     }
 }
