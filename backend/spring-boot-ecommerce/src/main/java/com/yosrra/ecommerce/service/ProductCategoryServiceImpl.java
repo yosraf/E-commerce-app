@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductCategoryServiceImpl implements IProductCategoryService{
+public class ProductCategoryServiceImpl implements IProductCategoryService {
 
     private final CategoryRepository categoryRepository;
 
@@ -18,5 +18,9 @@ public class ProductCategoryServiceImpl implements IProductCategoryService{
     @Override
     public List<ProductCategory> getProductCategories() {
         return this.categoryRepository.findAll();
+    }
+
+    public ProductCategory createProductCategory(ProductCategory productCategory) {
+        return this.categoryRepository.save(productCategory);
     }
 }

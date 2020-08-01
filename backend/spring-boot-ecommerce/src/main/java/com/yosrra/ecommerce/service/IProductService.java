@@ -10,4 +10,6 @@ public interface IProductService {
     List<Product> getProductList();
 
     List<Product> findByCategoryId(Long id, Pageable pageable);
+
+    Product createProductList(Product product);
 }

@@ -22,7 +22,12 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public List<Product> findByCategoryId(Long id , Pageable pageable) {
+    public List<Product> findByCategoryId(Long id, Pageable pageable) {
         return this.productRepository.findByCategoryId(id, pageable);
+    }
+
+    @Override
+    public Product createProductList(Product product) {
+        return this.productRepository.save(product);
     }
 }

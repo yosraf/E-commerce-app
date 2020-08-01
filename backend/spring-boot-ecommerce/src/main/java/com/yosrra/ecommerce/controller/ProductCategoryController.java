@@ -4,9 +4,7 @@ import com.yosrra.ecommerce.entity.ProductCategory;
 import com.yosrra.ecommerce.service.ProductCategoryServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +22,9 @@ public class ProductCategoryController {
     @GetMapping("categories")
     public ResponseEntity<List<ProductCategory>> getProductCategory() {
         return new ResponseEntity<>(this.productService.getProductCategories(), HttpStatus.OK);
+    }
+    @PostMapping("categories")
+    public ResponseEntity<ProductCategory> createProductCategory(@RequestBody ProductCategory productCategory) {
+        return new ResponseEntity<>(this.productService.createProductCategory(productCategory), HttpStatus.CREATED);
     }
 }
