@@ -128,4 +128,12 @@ public class Product {
     public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
+
+//    public ProductCategory getCategory() {
+//        return category;
+//    }
+
+    public void setCategory(ProductCategory category) {
+        this.category = category;
+    }
 }
