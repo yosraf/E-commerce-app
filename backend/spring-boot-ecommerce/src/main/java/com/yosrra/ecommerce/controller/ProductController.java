@@ -21,12 +21,12 @@ public class ProductController {
     }
 
     @GetMapping("products")
-    ResponseEntity<List<Product>> getProductList() {
+    public ResponseEntity<List<Product>> getProductList() {
         return new ResponseEntity<>(productService.getProductList(), HttpStatus.OK);
     }
 
     @GetMapping("products/search/{id}")
-    ResponseEntity<List<Product>> findByCategoryId(@PathVariable Long id, Pageable pageable) {
+    public ResponseEntity<List<Product>> findByCategoryId(@PathVariable Long id, Pageable pageable) {
         return new ResponseEntity<>(productService.findByCategoryId(id, pageable), HttpStatus.OK);
     }
 }
