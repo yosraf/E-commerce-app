@@ -129,9 +129,9 @@ public class Product {
         this.lastUpdated = lastUpdated;
     }
 
-//    public ProductCategory getCategory() {
-//        return category;
-//    }
+    public ProductCategory getCategory() {
+        return category;
+    }
 
     public void setCategory(ProductCategory category) {
         this.category = category;

@@ -15,7 +15,7 @@ export class ProductService {
   }
 
   getProductList(categoryId: number): Observable<Product[]> {
-    return this.httpClient.get<any>(this.baseUrl + 'products');
+    return this.httpClient.get<any>(this.baseUrl + 'products/search/' + categoryId);
 
   }
 
