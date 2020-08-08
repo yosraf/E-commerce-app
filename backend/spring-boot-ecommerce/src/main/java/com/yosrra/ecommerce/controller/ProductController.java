@@ -23,13 +23,18 @@ public class ProductController {
     public ResponseEntity<List<Product>> getProductList() {
         return new ResponseEntity<>(productService.getProductList(), HttpStatus.OK);
     }
+
     @PostMapping("products")
     public ResponseEntity<Product> createProductList(@RequestBody Product product) {
         return new ResponseEntity<>(productService.createProductList(product), HttpStatus.CREATED);
     }
-
     @GetMapping("products/search/{id}")
     public ResponseEntity<List<Product>> findByCategoryId(@PathVariable Long id, Pageable pageable) {
         return new ResponseEntity<>(productService.findByCategoryId(id, pageable), HttpStatus.OK);
+    }
+
+    @GetMapping("products/search")
+    public ResponseEntity<List<Product>> findByName(@RequestParam String name, Pageable pageable) {
+        return new ResponseEntity<>(productService.findByName(name, pageable), HttpStatus.OK);
     }
 }

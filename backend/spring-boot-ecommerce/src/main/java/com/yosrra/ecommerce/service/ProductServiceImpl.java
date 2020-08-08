@@ -27,6 +27,11 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
+    public List<Product> findByName(String name, Pageable pageable) {
+        return productRepository.findByNameContaining(name, pageable);
+    }
+
+    @Override
     public Product createProductList(Product product) {
         return this.productRepository.save(product);
     }

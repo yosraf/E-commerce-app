@@ -11,5 +11,7 @@ public interface IProductService {
 
     List<Product> findByCategoryId(Long id, Pageable pageable);
 
+    List<Product> findByName(String name, Pageable pageable);
+
     Product createProductList(Product product);
 }

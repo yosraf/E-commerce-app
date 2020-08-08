@@ -23,5 +23,9 @@ export class ProductService {
     return this.httpClient.get<any>(this.baseUrl + 'categories');
 
   }
+
+  searchProduct(keyWord: string): Observable<Product[]> {
+    return this.httpClient.get<any>(this.baseUrl + `products/search?name=${keyWord}`);
+  }
 }
 
