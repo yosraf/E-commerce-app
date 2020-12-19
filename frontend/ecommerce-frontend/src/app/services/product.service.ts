@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, BehaviorSubject} from 'rxjs';
 import {Product} from '../common/product';
 import {ProductCategory} from '../common/product-category';
 
@@ -10,6 +10,8 @@ import {ProductCategory} from '../common/product-category';
 export class ProductService {
 
   baseUrl = 'http://localhost:8080/';
+  public itemNumber = new BehaviorSubject(0);
+  public itemPrice = new BehaviorSubject(0);
 
   constructor(private httpClient: HttpClient) {
   }
@@ -26,6 +28,12 @@ export class ProductService {
 
   searchProduct(keyWord: string): Observable<Product[]> {
     return this.httpClient.get<any>(this.baseUrl + `products/search?name=${keyWord}`);
+  }
+
+  addProductToCart(number, price){
+    this.itemNumber.next(number);
+    this.itemPrice.next(price);
+
   }
 }
 
