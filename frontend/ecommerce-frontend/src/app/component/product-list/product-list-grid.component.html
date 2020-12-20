@@ -1,22 +1,31 @@
 <div class="main-content">
   <div class="section-content section-content-p30">
-     <div class="container-fluid">
-       <div class="row">
-          <div *ngFor="let product of products" class="col-md-3">
-            <div class="product-box">
-              <img src="{{product.imageUrl}}" class="img-responsive">
-              <h1>{{product.name}}</h1>
-              <div class="price">{{product.unitPrice|currency : 'USD'}}</div>
-              <button (click)="addToCart(product)" class="primary-btn"> Add to cart </button>
-            </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div *ngFor="let product of products" class="col-md-4">
+          <mat-card class="card">
+            <mat-card-header>
+              <mat-card-title>{{product.name}}</mat-card-title>
+              <mat-card-subtitle class="price"> {{product.unitPrice|currency : 'USD'}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="product.imageUrl" class="img-responsive card-img-top">
+            <mat-card-content>
+              <p>
+               {{product.description}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions class="d-flex justify-content-end">
+              <button mat-button class="btn btn-secondary">Product details</button>
+              <button mat-button (click)="addToCart(product)" class="btn btn-primary">Add to cart</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <div *ngIf="products?.length==0" class=" alert alert-info col-md-12" role="alert">
+          No product found.
+        </div>
+      </div>
 
-          </div>
-         <div *ngIf="products?.length==0" class=" alert alert-warning col-md-12" role="alert">
-           No product found.
-         </div>
-       </div>
-
-     </div>
+    </div>
   </div>
 
 </div>
