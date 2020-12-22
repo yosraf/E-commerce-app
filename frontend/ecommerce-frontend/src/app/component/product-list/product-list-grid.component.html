@@ -15,7 +15,7 @@
               </p>
             </mat-card-content>
             <mat-card-actions class="d-flex justify-content-end">
-              <button mat-button class="btn btn-secondary">Product details</button>
+              <a mat-button class="btn btn-secondary" [routerLink]="'/detail'">Product details</a>
               <button mat-button (click)="addToCart(product)" class="btn btn-primary">Add to cart</button>
             </mat-card-actions>
           </mat-card>
