@@ -24,6 +24,9 @@ public class User implements Serializable {
     @Column(name = "email", unique = true)
     private String email;
 
+    @Column(name = "password")
+    private String password;
+
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -118,5 +121,23 @@ public class User implements Serializable {
      */
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    /**
+     * Gets the user's password
+     *
+     * @return {@code String} the user's password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Sets the user's password
+     *
+     * @param password the user's password
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
