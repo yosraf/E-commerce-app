@@ -1,17 +1,21 @@
 package com.yosrra.ecommerce.entity;
 
 
+import com.yosrra.ecommerce.dto.UserDto;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "User")
+@Table(name = "users")
 public class User implements Serializable {
 
     @Id
-    @Column(name = "user_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -28,8 +32,8 @@ public class User implements Serializable {
     private String password;
 
     @ManyToMany
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
     /**
@@ -139,5 +143,23 @@ public class User implements Serializable {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * This method allow to convert user entity to userDto
+     *
+     * @return {@code UserDto} the userDto
+     */
+    public UserDto toUserDto() {
+        UserDto userDto = new UserDto();
+        userDto.setEmail(this.email);
+        userDto.setFirstName(this.firstName);
+        userDto.setLastName(this.lastName);
+        List<String> roles = new ArrayList<>();
+        this.roles.forEach(role -> {
+            roles.add(role.getRoleName());
+        });
+        userDto.setRoles(roles);
+        return userDto;
     }
 }
