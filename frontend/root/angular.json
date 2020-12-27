@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ecommerce-frontend": {
+    "root": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -15,9 +15,9 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "ngx-build-plus:build",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/child",
+            "outputPath": "dist/root",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,9 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -66,24 +64,24 @@
           }
         },
         "serve": {
-          "builder": "ngx-build-plus:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ecommerce-frontend:build"
+            "browserTarget": "root:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ecommerce-frontend:build:production"
+              "browserTarget": "root:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ecommerce-frontend:build"
+            "browserTarget": "root:build"
           }
         },
         "test": {
-          "builder": "ngx-build-plus:karma",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
@@ -116,18 +114,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ecommerce-frontend:serve"
+            "devServerTarget": "root:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ecommerce-frontend:serve:production"
+              "devServerTarget": "root:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "ecommerce-frontend",
+  "defaultProject": "root",
   "cli": {
     "analytics": false
   }

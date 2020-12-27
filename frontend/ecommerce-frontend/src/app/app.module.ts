@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector, ApplicationRef } from '@angular/core';
 
 import { MatCardModule } from '@angular/material/card';
 
@@ -12,6 +12,7 @@ import { ProductCategoryMenuComponent } from './component/product-category-menu/
 import { SearchComponent } from './component/search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductDetailComponent } from './component/product-detail/product-detail.component';
+import {createCustomElement} from '@angular/elements'
 
 const routes: Routes = [
   { path: 'category/:id', component: ProductListComponent },
@@ -39,7 +40,14 @@ const routes: Routes = [
     MatCardModule
   ],
   providers: [ProductService],
+  entryComponents:[ProductListComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(private injector: Injector) {
+    const micro = createCustomElement(ProductListComponent, {injector: this.injector})
+    customElements.define('dashboard-app', micro);
+  }
+
+  ngDoBootstrap(appRef: ApplicationRef): void {}
 }
